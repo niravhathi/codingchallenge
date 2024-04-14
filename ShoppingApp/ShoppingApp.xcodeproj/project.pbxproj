@@ -12,6 +12,9 @@
 		8912CA752BCAFE420013B1D2 /* MockClientAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912CA742BCAFE420013B1D2 /* MockClientAPIManager.swift */; };
 		8912CA772BCB01290013B1D2 /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8912CA762BCB01290013B1D2 /* NetworkServices.swift */; };
 		8912CA7C2BCB053F0013B1D2 /* MockProductList.json in Resources */ = {isa = PBXBuildFile; fileRef = 8912CA7B2BCB053E0013B1D2 /* MockProductList.json */; };
+		899014CC2BCBB34E00EE234F /* DatabaseManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899014CB2BCBB34E00EE234F /* DatabaseManagerTest.swift */; };
+		899014CD2BCBB8CB00EE234F /* ShoppingApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8996871B2BBEEC170002F033 /* ShoppingApp.xcdatamodeld */; };
+		899014CF2BCC331600EE234F /* ProductListViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899014CE2BCC331600EE234F /* ProductListViewPresenterTests.swift */; };
 		899687132BBEEC170002F033 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899687122BBEEC170002F033 /* AppDelegate.swift */; };
 		899687152BBEEC170002F033 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 899687142BBEEC170002F033 /* SceneDelegate.swift */; };
 		8996871A2BBEEC170002F033 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 899687182BBEEC170002F033 /* Main.storyboard */; };
@@ -71,6 +74,8 @@
 		8912CA742BCAFE420013B1D2 /* MockClientAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockClientAPIManager.swift; sourceTree = "<group>"; };
 		8912CA762BCB01290013B1D2 /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		8912CA7B2BCB053E0013B1D2 /* MockProductList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockProductList.json; sourceTree = "<group>"; };
+		899014CB2BCBB34E00EE234F /* DatabaseManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerTest.swift; sourceTree = "<group>"; };
+		899014CE2BCC331600EE234F /* ProductListViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewPresenterTests.swift; sourceTree = "<group>"; };
 		8996870F2BBEEC170002F033 /* ShoppingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoppingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		899687122BBEEC170002F033 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		899687142BBEEC170002F033 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,7 +205,6 @@
 				89B025102BC996EC00DFF790 /* Storage */,
 				899687702BC595430002F033 /* Network */,
 				8996874B2BBEFE8F0002F033 /* AppUi */,
-				899687492BBEFE6F0002F033 /* AppSettings */,
 				899687482BBEFE350002F033 /* AppAssets */,
 				899687462BBEEFE20002F033 /* CommonUtils */,
 				899687452BBEEF570002F033 /* AppModules */,
@@ -212,6 +216,8 @@
 			isa = PBXGroup;
 			children = (
 				8996872C2BBEEC190002F033 /* ShoppingAppTests.swift */,
+				899014CB2BCBB34E00EE234F /* DatabaseManagerTest.swift */,
+				899014CE2BCC331600EE234F /* ProductListViewPresenterTests.swift */,
 				8912CA712BCAFC720013B1D2 /* ProductListInteractorTests.swift */,
 			);
 			path = ShoppingAppTests;
@@ -323,6 +329,7 @@
 				8912CA762BCB01290013B1D2 /* NetworkServices.swift */,
 				8912CA732BCAFE010013B1D2 /*  MockClientAPIManager */,
 				899687752BC595DA0002F033 /* NetworkManager.swift */,
+				899687492BBEFE6F0002F033 /* AppSettings */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -523,7 +530,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				899014CC2BCBB34E00EE234F /* DatabaseManagerTest.swift in Sources */,
+				899014CD2BCBB8CB00EE234F /* ShoppingApp.xcdatamodeld in Sources */,
 				8912CA722BCAFC720013B1D2 /* ProductListInteractorTests.swift in Sources */,
+				899014CF2BCC331600EE234F /* ProductListViewPresenterTests.swift in Sources */,
 				8996872D2BBEEC190002F033 /* ShoppingAppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,6 +762,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.nirav.ShoppingAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

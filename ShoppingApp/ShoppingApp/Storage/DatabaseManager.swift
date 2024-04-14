@@ -38,7 +38,6 @@ class DatabaseManager : StorageManager {
         for obj in objects {
             backgroundContext.delete(obj)
         }
-
         do {
             try backgroundContext.save() // <- remember to put this :)
         } catch {

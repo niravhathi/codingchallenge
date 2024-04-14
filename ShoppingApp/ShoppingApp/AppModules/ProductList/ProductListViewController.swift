@@ -11,9 +11,9 @@ class ProductListViewController: UIViewController {
     
     @IBOutlet weak var cartItemsCountLabel: UILabel!
     @IBOutlet weak var productListTableView: UITableView!
-    var productListPresenter:ProductListViewToPresenterProtocol?
+     var productListPresenter:ProductListViewToPresenterProtocol?
     var productList:[Product]?
-    var isLoadingList : Bool = false
+    private var isLoadingList : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         productListPresenter?.requestProductListToPresenter()
@@ -32,10 +32,14 @@ class ProductListViewController: UIViewController {
   
 }
 extension ProductListViewController: ProductListPresenterToViewProtocol {
-    func responseProductListToView(productList: [Product]) {
-        self.productList = productList
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-            self.productListTableView.reloadData()
+    func responseProductListToView(productList: [Product]?, error: Error?) {
+        if error == nil {
+            self.productList = productList
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                self.productListTableView.reloadData()
+            }
+        } else {
+            self.showAlertMessage(title: "Error", message: error?.localizedDescription)
         }
     }
     func responseCartDataToView(productList: [Product]) {

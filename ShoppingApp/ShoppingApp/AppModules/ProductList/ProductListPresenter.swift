@@ -27,8 +27,9 @@ class ProductListPresenter:ProductListViewToPresenterProtocol{
     }
 }
 extension ProductListPresenter: ProductListInteractorToPresenterProtocol {
-    func responseProductListToPresenter(productList: [Product]) {
-        view?.responseProductListToView(productList: productList)
+    func responseProductListToPresenter(productList: [Product]?, error:Error?) {
+
+        view?.responseProductListToView(productList: productList, error:error)
     }
     func responseCartDataToPresenter(productList: [Product]) {
         view?.responseCartDataToView(productList: productList)

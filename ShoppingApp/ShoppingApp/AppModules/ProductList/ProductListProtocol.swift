@@ -27,13 +27,13 @@ protocol ProductListPresenterToInteractorProtocol:AnyObject {
 }
 
 protocol ProductListInteractorToPresenterProtocol:AnyObject {
-    func responseProductListToPresenter(productList:[Product])
+    func responseProductListToPresenter(productList:[Product]?, error:Error?)
     func responseCartDataToPresenter(productList:[Product])
 }
 
 protocol ProductListPresenterToViewProtocol:AnyObject {
     
-    func responseProductListToView(productList:[Product])
+    func responseProductListToView(productList:[Product]?, error:Error?)
     func responseCartDataToView(productList: [Product])
     
 }
