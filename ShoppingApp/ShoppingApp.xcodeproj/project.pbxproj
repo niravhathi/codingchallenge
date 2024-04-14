@@ -202,6 +202,7 @@
 		899687112BBEEC170002F033 /* ShoppingApp */ = {
 			isa = PBXGroup;
 			children = (
+				899687492BBEFE6F0002F033 /* AppSettings */,
 				89B025102BC996EC00DFF790 /* Storage */,
 				899687702BC595430002F033 /* Network */,
 				8996874B2BBEFE8F0002F033 /* AppUi */,
@@ -329,7 +330,6 @@
 				8912CA762BCB01290013B1D2 /* NetworkServices.swift */,
 				8912CA732BCAFE010013B1D2 /*  MockClientAPIManager */,
 				899687752BC595DA0002F033 /* NetworkManager.swift */,
-				899687492BBEFE6F0002F033 /* AppSettings */,
 			);
 			path = Network;
 			sourceTree = "<group>";
