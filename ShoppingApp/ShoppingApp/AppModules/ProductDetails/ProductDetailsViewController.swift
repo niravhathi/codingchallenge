@@ -72,8 +72,8 @@ extension ProductDetailsViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let iCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constant.productImagesCollectionViewCell, for: indexPath) as! ProductImagesCollectionViewCell
-        if let imgUrl = URL(string: product?.images?[indexPath.row] ?? "") {
-            iCell.productImage.loadImageWithUrl(imgUrl)
+        if let imgUrl = product?.images?[indexPath.row] {
+            iCell.configuCell(proudctImage: imgUrl)
         }
         return iCell
     }

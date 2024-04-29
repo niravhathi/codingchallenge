@@ -10,4 +10,9 @@ import UIKit
 class ProductImagesCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var productImage: ImageLoader!
+    func configuCell(proudctImage: String) {
+        if let imgUrl = URL(string: proudctImage) {
+           productImage.loadImageWithUrl(imgUrl)
+        }
+    }
 }
