@@ -7,5 +7,5 @@
 
 import Foundation
 protocol NetworkingService {
-    func getDataWith(for URLEndPoint:String, parameters: [String: String], completionSuccess: @escaping (Data) -> Void, completionFailure: @escaping (APIError) -> Void)
+    func getDataWith(for URLEndPoint:String, parameters: [String: String],  completionHandler:@escaping (Result<Data, APIError>) -> Void)
 }

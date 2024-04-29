@@ -18,7 +18,7 @@ class ProductDetailsViewController: UIViewController {
     @IBOutlet weak var productImagesCollectionView: UICollectionView!
     var productDetailsPresenter: ProductDetailsViewToPresenterProtocol?
     var productListPresenter: ProductListPresenter?
-    var product: Product?
+    private var product: Product?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Product Details"

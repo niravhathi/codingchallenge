@@ -34,5 +34,15 @@ class ProductListTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    func config(product: Product) {
+        titleLabel.text = product.title
+        priceLabel.text = "$\(product.price ?? 0)" + "(\(product.discountPercentage ?? 0)% off)"
+        ratingLabel.text = "\(product.rating ?? 0)"
+        descriptionLabel.text = product.description
+        if let imgUrl = URL(string: product.thumbnail ?? "") {
+            thumbnailImage.loadImageWithUrl(imgUrl)
+        }
+        backgroundColor = UIColor.clear
+    }
 
 }

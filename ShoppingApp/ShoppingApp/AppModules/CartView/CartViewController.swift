@@ -55,15 +55,10 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let iCell =  tableView.dequeueReusableCell(withIdentifier: "CartTableViewCell", for: indexPath) as! CartTableViewCell
-        let total = (cartData?[indexPath.row].price ?? 0) * (self.cartData?[indexPath.row].quantity ?? 0)
-        iCell.priceLabel.text = "$\(total)"
-        iCell.productNameLabel.text = self.cartData?[indexPath.row].title
-        iCell.productBrand.text = self.cartData?[indexPath.row].brand
         iCell.removeProductButton.tag = indexPath.row
-        if let imgUrl = URL(string: cartData?[indexPath.row].thumbnail ?? "") {
-            iCell.productImage.loadImageWithUrl(imgUrl)
+        if let cartItem = cartData?[indexPath.row] {
+            iCell.configCell(cartItem: cartItem)
         }
-        iCell.productQuantityLabel.text = "Qty: \(self.cartData?[indexPath.row].quantity ?? 0)"
         return iCell
     }
     

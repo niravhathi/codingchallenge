@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class Constant{
+struct Constant{
     static let apiURL = "https://dummyjson.com"
     static let productListURL = apiURL + "/products"
     static var productLimit: Int = 10

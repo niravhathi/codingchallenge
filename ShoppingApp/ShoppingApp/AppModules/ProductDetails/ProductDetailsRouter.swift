@@ -18,7 +18,7 @@ class ProductDetailsRouter:ProductDetailsPresenterToRouterProtocol{
         let router:ProductDetailsPresenterToRouterProtocol = ProductDetailsRouter()
         
         view.productDetailsPresenter = presenter
-        view.productListPresenter = ProductListPresenter()
+      //  view.productListPresenter = ProductListPresenter()
         presenter.view = view
         presenter.router = router
         presenter.interactor = interactor

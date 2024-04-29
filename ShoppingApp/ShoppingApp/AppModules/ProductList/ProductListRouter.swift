@@ -16,10 +16,8 @@ class ProductListRouter:ProductListPresenterToRouterProtocol{
         let presenter: ProductListViewToPresenterProtocol & ProductListInteractorToPresenterProtocol = ProductListPresenter()
         let interactor: ProductListPresenterToInteractorProtocol = ProductListInteractor(netWorkService: ClientAPIManager())
         let router:ProductListPresenterToRouterProtocol = ProductListRouter()
-        
-     
+    
         viewController.productListPresenter = presenter
-        
         presenter.view = viewController
         presenter.router = router
         presenter.interactor = interactor

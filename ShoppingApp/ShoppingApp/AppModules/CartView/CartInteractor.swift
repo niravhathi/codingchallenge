@@ -8,9 +8,7 @@
 import Foundation
 
 class CartInteractor: CartPresenterToInteractorProtocol {
-    
     var presenter: CartInteractorToPresenterProtocol?
-    
     private let manager = DatabaseManager()
     func requestCartDataToInteractor() {
             let cartData: [Product] = manager.prepareData()
@@ -20,6 +18,5 @@ class CartInteractor: CartPresenterToInteractorProtocol {
         manager.removeFromName(stringName: name)
         presenter?.responseSuccessRemoveCartToPresenter()
     }
-    
 }
 

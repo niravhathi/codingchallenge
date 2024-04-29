@@ -8,7 +8,7 @@
 import XCTest
 @testable import ShoppingApp
 final class ProductListInteractorTests: XCTestCase {
-    var productListInteractor: ProductListInteractor!
+    private var productListInteractor: ProductListInteractor!
     override func setUp() {
         let mockClientAPIManager = MockClientAPIManager()
         productListInteractor = ProductListInteractor(netWorkService: mockClientAPIManager)

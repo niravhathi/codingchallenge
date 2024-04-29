@@ -25,5 +25,14 @@ class CartTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    func configCell(cartItem: Product) {
+        let total = (cartItem.price ?? 0) * (cartItem.quantity ?? 0)
+        priceLabel.text = "$\(total)"
+        productNameLabel.text = cartItem.title
+        productBrand.text = cartItem.brand
+        if let imgUrl = URL(string: cartItem.thumbnail ?? "") {
+            productImage.loadImageWithUrl(imgUrl)
+        }
+        productQuantityLabel.text = "Qty: \(cartItem.quantity ?? 0)"
+    }
 }

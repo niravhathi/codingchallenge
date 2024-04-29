@@ -11,8 +11,8 @@ class ProductListViewController: UIViewController {
     
     @IBOutlet weak var cartItemsCountLabel: UILabel!
     @IBOutlet weak var productListTableView: UITableView!
-     var productListPresenter:ProductListViewToPresenterProtocol?
-    var productList:[Product]?
+    var productListPresenter:ProductListViewToPresenterProtocol?
+    private var productList:[Product]?
     private var isLoadingList : Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class ProductListViewController: UIViewController {
         }
         
     }
-  
+    
 }
 extension ProductListViewController: ProductListPresenterToViewProtocol {
     func responseProductListToView(productList: [Product]?, error: Error?) {
@@ -54,14 +54,9 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListTableViewCell", for: indexPath) as! ProductListTableViewCell
-        cell.titleLabel.text = productList?[indexPath.row].title
-        cell.priceLabel.text = "$\(productList?[indexPath.row].price ?? 0)" + "(\(productList?[indexPath.row].discountPercentage ?? 0)% off)"
-        cell.ratingLabel.text = "\(productList?[indexPath.row].rating ?? 0)"
-        cell.descriptionLabel.text = productList?[indexPath.row].description
-        if let imgUrl = URL(string: productList?[indexPath.row].thumbnail ?? "") {
-            cell.thumbnailImage.loadImageWithUrl(imgUrl)
+        if let product =  productList?[indexPath.row] {
+            cell.config(product:  product)
         }
-        cell.backgroundColor = UIColor.clear
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

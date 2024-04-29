@@ -20,19 +20,23 @@ class ProductListInteractor:ProductListPresenterToInteractorProtocol{
     }
     func requestProductListToInteractor() {
         netWorkService.getDataWith(for: Constant.productListURL, parameters: ["limit":String(Constant.productLimit)]) { result in
-            do {
-                self.products = try Constant.decoder.decode(ProductList.self, from: result)
-                if let products =  self.products?.products {
-                    self.presenter?.responseProductListToPresenter(productList: products, error: nil)
-                } else {
-                    self.presenter?.responseProductListToPresenter(productList: nil, error: "Service Unavailable." as? Error)
+            switch result {
+                case .success(let data):
+                do {
+                    self.products = try Constant.decoder.decode(ProductList.self, from: data)
+                    if let products =  self.products?.products {
+                        self.presenter?.responseProductListToPresenter(productList: products, error: nil)
+                    } else {
+                        self.presenter?.responseProductListToPresenter(productList: nil, error: "Service Unavailable." as? Error)
+                    }
+                  
+                } catch {
+                    self.presenter?.responseProductListToPresenter(productList: nil, error: error)
                 }
-              
-            } catch {
+                case .failure(let error):
                 self.presenter?.responseProductListToPresenter(productList: nil, error: error)
-            }
-        } completionFailure: { error in
-            self.presenter?.responseProductListToPresenter(productList: nil, error: error)
+                }
+           
         }
     }
     func getProductListCount(productList: [Product]) -> Int {

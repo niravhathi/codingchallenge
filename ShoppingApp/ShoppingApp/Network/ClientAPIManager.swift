@@ -17,9 +17,9 @@ enum APIError: Swift.Error {
 
 class ClientAPIManager: NetworkingService {
     private let urlSession = URLSession.shared
-    var cachedUrl: URL?
-    var task: URLSessionDataTask?
-    func getDataWith(for URLEndPoint:String, parameters: [String: String], completionSuccess: @escaping (Data) -> Void, completionFailure: @escaping (APIError) -> Void) {
+    private var cachedUrl: URL?
+    private var task: URLSessionDataTask?
+    func getDataWith(for URLEndPoint:String, parameters: [String: String],  completionHandler:@escaping (Result<Data, APIError>) -> Void) {
         if NetworkManager.isConnectedToNetwork() {
             DispatchQueue.main.async {
                 // indicator?.startAnimating()
@@ -27,7 +27,7 @@ class ClientAPIManager: NetworkingService {
             guard let url = URL(
                 string:URLEndPoint
                 ) else {
-                    return completionFailure(.failedToCreateURL)
+                return completionHandler(.failure(.failedToCreateURL))
             }
             self.cachedUrl = url
             var components = URLComponents(string: url.absoluteString)!
@@ -41,24 +41,24 @@ class ClientAPIManager: NetworkingService {
                 }
                 guard error == nil
                     else {
-                        return completionFailure(.parsingError(error: error?.localizedDescription ?? ""))
+                        return completionHandler(.failure(.parsingError(error: error?.localizedDescription ?? "")))
                 }
                 guard let data = data
                     else {
-                        return completionFailure(.parsingError(error: error?.localizedDescription ?? "There are no new Items to show"))
+                    return completionHandler(.failure(.parsingError(error: error?.localizedDescription ?? "There are no new Items to show")))
                 }
                 do {
                     if let _ = try JSONSerialization.jsonObject(with: data, options: [.mutableContainers]) as? [String: AnyObject] {
-                        completionSuccess(data)
+                        completionHandler(.success(data))
                     }
                 } catch let error {
                     
-                    return completionFailure(.parsingError(error: error.localizedDescription))
+                    return completionHandler(.failure(.parsingError(error: error.localizedDescription)))
                 }
             }
             task?.resume()
         } else {
-            return completionFailure(.networkError(error:  "Internet not available.", response: nil) )
+            return completionHandler(.failure(.networkError(error:  "Internet not available.", response: nil)))
         }
     }
 }
